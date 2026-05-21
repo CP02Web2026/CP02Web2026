@@ -33,12 +33,16 @@ function listarVinhos() {
     alert(`${nome} | Tipo: ${v.tipo} | Safra: ${v.safra} | Quantidade: ${v.quantidade}`);
   }
 }
-function verificarEstoque(){
+function verificarEstoque() {
     const nomeVinho = prompt("Informe o nome do vinho que deseja verificar: ");
-    if (estoqueVinho[nomeVinho].quantidade < 5){
-        alert(`O estoque está baixo, possuem ${estoqueVinho[nomeVinho].quantidade} unidades em estoque`);
+    if (!estoqueVinho[nomeVinho]) {
+        alert("Vinho não encontrado no estoque.");
+        return;
     }
-    else{
-        alert(`O estoque do vinho ${nomeVinho} é de ${estoqueVinho[nomeVinho].quantidade}`);
+    const qtd = estoqueVinho[nomeVinho].quantidade;
+    if (qtd < 5) {
+        alert(`Estoque baixo: ${qtd} unidades.`);
+    } else {
+        alert(`O estoque de ${nomeVinho} é de ${qtd} unidades.`);
     }
 }
