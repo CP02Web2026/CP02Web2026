@@ -1,22 +1,19 @@
 const estoqueVinho = {};
 let contador = 0;
+let contadorBaixo = 0;
 function cadastrarVinho(){
     while(confirm("Você deseja cadastrar um vinho ?")){
         let nomeVinho = prompt("Informe o nome do vinho: ");
-        while (nomeVinho == null){
-           nomeVinho = prompt("Informe o nome do vinho: ");
+        if (nomeVinho === null) continue;{
         }
         let novoEstoqueVinho = parseInt(prompt("Informe a quantidade de vinho a ser armazenada: "));
-        while(novoEstoqueVinho == null){
-            novoEstoqueVinho = parseInt(prompt("Informe a quantidade de vinho a ser armazenada: "));
+        if (novoEstoqueVinho === null) continue;{
         }
         let safraVinho = parseInt(prompt("Indique qual a safra do vinho: "));
-        while (safraVinho == null){
-            safraVinho = parseInt(prompt("Indique qual a safra do vinho: "));
+        if (safraVinho === null) continue;{
         }
         let tipoVinho = prompt("Indique qual o tipo do vinho: ");
-        while (tipoVinho == null){
-            tipoVinho = prompt("Indique qual o tipo do vinho: ");
+        if (tipoVinho === null) continue;{
         }
         estoqueVinho[nomeVinho] = {
             quantidade: (estoqueVinho[nomeVinho]?.quantidade ?? 0) + novoEstoqueVinho,
@@ -25,7 +22,16 @@ function cadastrarVinho(){
         }
         alert(`${nomeVinho} foi adicionado e agora existem ${estoqueVinho[nomeVinho].quantidade} desse vinho !`);
         contador += 1;
+        vinhosCadastrados();
+
+        if (estoqueVinho[nomeVinho].quantidade < 5) {
+            contadorBaixo += 1;
+            vinhosBaixos();
         }
+
+        vinhoMaisAntigo();
+    }
+        
 }
 function listarVinhos() {
   for (const nome in estoqueVinho) {
@@ -44,5 +50,32 @@ function verificarEstoque() {
         alert(`Estoque baixo: ${qtd} unidades.`);
     } else {
         alert(`O estoque de ${nomeVinho} é de ${qtd} unidades.`);
+    }
+}
+
+function vinhosCadastrados() {
+    const elemento = document.getElementById("contadorVinhos");
+    elemento.textContent = `Vinhos cadastrados: ${contador}`;
+}
+
+function vinhosBaixos() {
+    const elemento = document.getElementById("vinhoBaixo");
+    elemento.textContent = `Vinhos com estoque baixo: ${contadorBaixo}`;
+}
+
+function vinhoMaisAntigo() {
+    let nomeAntigo = null;
+    let safraAntiga = Infinity; 
+
+    for (const nome in estoqueVinho) {
+        if (estoqueVinho[nome].safra < safraAntiga) {
+            safraAntiga = estoqueVinho[nome].safra; 
+            nomeAntigo = nome;                      
+        }
+    }
+
+    const elemento = document.getElementById("vinhoAntigo");
+    if (nomeAntigo) {
+        elemento.textContent = `Vinho mais antigo: ${nomeAntigo} (${safraAntiga})`;
     }
 }
