@@ -134,13 +134,13 @@ body::before {
     gap: 16px;
     width: min(92%, 520px);
     margin: 0 auto;
-    padding: 8px 0 48px;
+    padding: 8px 0 26px;
 }
 
 .wine-button {
     position: relative;
     min-height: 76px;
-    padding: 18px 22px;
+    padding: 18px 22px 18px 92px;
     overflow: hidden;
     cursor: pointer;
     border: 1px solid rgba(255, 215, 148, 0.34);
@@ -151,6 +151,7 @@ body::before {
     font-size: 1rem;
     font-weight: 700;
     letter-spacing: 0;
+    text-align: left;
     text-transform: uppercase;
     box-shadow:
         0 14px 28px rgba(0, 0, 0, 0.34),
@@ -166,6 +167,7 @@ body::before {
     content: "";
     position: absolute;
     inset: 0;
+    z-index: 0;
     background:
         radial-gradient(circle at 18% 20%, rgba(255, 230, 171, 0.2), transparent 27%),
         linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.18), transparent);
@@ -174,11 +176,26 @@ body::before {
 }
 
 .wine-button::after {
-    content: "";
+    content: "+";
     position: absolute;
-    inset: 1px;
-    border-radius: 15px;
-    border: 1px solid rgba(255, 255, 255, 0.06);
+    top: 50%;
+    left: 22px;
+    z-index: 1;
+    display: grid;
+    place-items: center;
+    width: 48px;
+    height: 48px;
+    border: 1px solid rgba(255, 241, 196, 0.42);
+    border-radius: 14px;
+    background:
+        linear-gradient(135deg, rgba(255, 245, 205, 0.22), rgba(212, 161, 63, 0.1));
+    color: #ffe8a3;
+    font-size: 1.55rem;
+    line-height: 1;
+    transform: translateY(-50%);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.18),
+        0 10px 20px rgba(0, 0, 0, 0.24);
     pointer-events: none;
 }
 
@@ -210,6 +227,54 @@ body::before {
         linear-gradient(135deg, #7d123f 0%, #3b082e 46%, #d4a13f 140%);
     border-color: rgba(255, 230, 171, 0.62);
     color: #fff9ec;
+}
+
+.list-button {
+    background:
+        linear-gradient(135deg, rgba(43, 21, 78, 0.95), rgba(19, 4, 32, 0.96));
+}
+
+.list-button::after {
+    content: "";
+    border-color: rgba(188, 231, 255, 0.44);
+    background:
+        linear-gradient(#bce7ff, #bce7ff) 15px 14px / 20px 3px no-repeat,
+        linear-gradient(#bce7ff, #bce7ff) 15px 23px / 20px 3px no-repeat,
+        linear-gradient(#bce7ff, #bce7ff) 15px 32px / 20px 3px no-repeat,
+        linear-gradient(135deg, rgba(188, 231, 255, 0.2), rgba(92, 84, 160, 0.13));
+}
+
+.stock-button {
+    background:
+        linear-gradient(135deg, rgba(88, 31, 34, 0.95), rgba(20, 5, 18, 0.96));
+}
+
+.stock-button::after {
+    content: "!";
+    color: #ffcfc2;
+    border-color: rgba(255, 207, 194, 0.44);
+    background:
+        linear-gradient(135deg, rgba(255, 207, 194, 0.2), rgba(163, 74, 59, 0.13));
+}
+
+.status-panel {
+    display: grid;
+    gap: 12px;
+    width: min(92%, 520px);
+    margin: 0 auto 48px;
+}
+
+.status-panel p {
+    margin: 0;
+    padding: 16px 18px;
+    border: 1px solid rgba(255, 215, 148, 0.22);
+    border-radius: 14px;
+    background: rgba(11, 5, 16, 0.46);
+    color: #fff0cf;
+    font-weight: 700;
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.08),
+        0 12px 24px rgba(0, 0, 0, 0.24);
 }
 
 @media (max-width: 760px) {

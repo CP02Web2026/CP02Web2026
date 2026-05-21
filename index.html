@@ -12,14 +12,16 @@
     </header>
 
     <main class="actions-panel">
-        <button class="wine-button primary" onclick="cadastrarVinho()">Cadastre já o seu vinho!</button>
-        <button class="wine-button" onclick="listarVinhos()">Listar os vinhos</button>
-        <button class="wine-button" onclick="verificarEstoque()">Verificar o estoque</button>
+        <button class="wine-button primary add-button" onclick="cadastrarVinho()">Cadastre já o seu vinho!</button>
+        <button class="wine-button list-button" onclick="listarVinhos()">Listar os vinhos</button>
+        <button class="wine-button stock-button" onclick="verificarEstoque()">Verificar o estoque</button>
     </main>
 
-    <p id="contadorVinhos">Vinhos cadastrados: 0</p>
-    <p id="vinhoBaixo">Vinhos com estoque baixo: 0</p>
-    <p id="vinhoAntigo">Vinho mais antigo: </p>
+    <section class="status-panel" aria-label="Resumo do estoque">
+        <p id="contadorVinhos">Vinhos cadastrados: 0</p>
+        <p id="vinhoBaixo">Vinhos com estoque baixo: 0</p>
+        <p id="vinhoAntigo">Vinho mais antigo: </p>
+    </section>
 
     <script src="./src/js/script.js"></script>
 </body>
