@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Vinharia Agnello</title>
     <link rel="stylesheet" href="./src/css/style.css">
 </head>
 <body>
@@ -11,9 +11,12 @@
         <h1>Bem-vindo à Vinharia Agnello!</h1>
     </header>
 
-    <button onclick=cadastrarVinho()>Cadastre já o seu vinho!</button>
-    <button onclick=listarVinhos()>Listar os vinhos</button>
-    <button onclick=verificarEstoque()>Verificar o estoque</button>
+    <main class="actions-panel">
+        <button class="wine-button primary" onclick="cadastrarVinho()">Cadastre já o seu vinho!</button>
+        <button class="wine-button" onclick="listarVinhos()">Listar os vinhos</button>
+        <button class="wine-button" onclick="verificarEstoque()">Verificar o estoque</button>
+    </main>
+
     <script src="./src/js/script.js"></script>
 </body>
 </html>

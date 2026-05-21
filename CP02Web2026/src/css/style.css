@@ -6,9 +6,24 @@ body {
     min-height: 100vh;
     margin: 0;
     background:
+        radial-gradient(circle at 85% 80%, rgba(212, 161, 63, 0.16), transparent 30%),
         radial-gradient(circle at top left, rgba(120, 0, 74, 0.35), transparent 34%),
         linear-gradient(135deg, #12000f 0%, #241128 46%, #09080c 100%);
     font-family: Arial, sans-serif;
+    color: #fff5df;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 46px 46px;
+    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.72), transparent);
 }
 
 .hero-header {
@@ -110,6 +125,101 @@ body {
 
     50% {
         background-position: 100% center;
+    }
+}
+
+.actions-panel {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    width: min(92%, 520px);
+    margin: 0 auto;
+    padding: 8px 0 48px;
+}
+
+.wine-button {
+    position: relative;
+    min-height: 76px;
+    padding: 18px 22px;
+    overflow: hidden;
+    cursor: pointer;
+    border: 1px solid rgba(255, 215, 148, 0.34);
+    border-radius: 16px;
+    background:
+        linear-gradient(135deg, rgba(63, 8, 42, 0.92), rgba(20, 4, 30, 0.96));
+    color: #fff4d6;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    box-shadow:
+        0 14px 28px rgba(0, 0, 0, 0.34),
+        inset 0 1px 0 rgba(255, 255, 255, 0.12);
+    transition:
+        transform 180ms ease,
+        border-color 180ms ease,
+        box-shadow 180ms ease,
+        color 180ms ease;
+}
+
+.wine-button::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(circle at 18% 20%, rgba(255, 230, 171, 0.2), transparent 27%),
+        linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.18), transparent);
+    transform: translateX(-100%);
+    transition: transform 420ms ease;
+}
+
+.wine-button::after {
+    content: "";
+    position: absolute;
+    inset: 1px;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    pointer-events: none;
+}
+
+.wine-button:hover {
+    transform: translateY(-5px);
+    border-color: rgba(255, 224, 159, 0.74);
+    color: #ffffff;
+    box-shadow:
+        0 20px 34px rgba(0, 0, 0, 0.42),
+        0 0 24px rgba(212, 161, 63, 0.22),
+        inset 0 1px 0 rgba(255, 255, 255, 0.18);
+}
+
+.wine-button:hover::before {
+    transform: translateX(100%);
+}
+
+.wine-button:active {
+    transform: translateY(-1px) scale(0.99);
+}
+
+.wine-button:focus-visible {
+    outline: 3px solid rgba(255, 232, 163, 0.7);
+    outline-offset: 4px;
+}
+
+.wine-button.primary {
+    background:
+        linear-gradient(135deg, #7d123f 0%, #3b082e 46%, #d4a13f 140%);
+    border-color: rgba(255, 230, 171, 0.62);
+    color: #fff9ec;
+}
+
+@media (max-width: 760px) {
+    .actions-panel {
+        gap: 14px;
+        padding-bottom: 32px;
+    }
+
+    .wine-button {
+        min-height: 66px;
     }
 }
 
