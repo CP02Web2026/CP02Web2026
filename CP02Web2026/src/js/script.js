@@ -1,5 +1,5 @@
 const estoqueVinho = {};
-let contator = 0;
+let contador = 0;
 function cadastrarVinho(){
     while(confirm("Você deseja cadastrar um vinho ?")){
         let nomeVinho = prompt("Informe o nome do vinho: ");
@@ -18,23 +18,27 @@ function cadastrarVinho(){
         while (tipoVinho == null){
             tipoVinho = prompt("Indique qual o tipo do vinho: ");
         }
-        estoqueVinho[nomeVinho] = (estoqueVinho[nomeVinho] ?? 0) + novoEstoqueVinho;
-        alert(`${nomeVinho} foi adicionado e agora existem ${estoqueVinho[nomeVinho]} desse vinho !`);
-        contator += 1;
+        estoqueVinho[nomeVinho] = {
+            quantidade: (estoqueVinho[nomeVinho]?.quantidade ?? 0) + novoEstoqueVinho,
+            safra: safraVinho,
+            tipo: tipoVinho
+        }
+        alert(`${nomeVinho} foi adicionado e agora existem ${estoqueVinho[nomeVinho].quantidade} desse vinho !`);
+        contador += 1;
         }
 }
 function listarVinhos() {
   for (const nome in estoqueVinho) {
     const v = estoqueVinho[nome];
-    alert(`${nome} | Tipo: ${v.tipoVinho} | Safra: ${v.safraVinho} | Quantidade: ${v.novoEstoqueVinho}`);
+    alert(`${nome} | Tipo: ${v.tipo} | Safra: ${v.safra} | Quantidade: ${v.quantidade}`);
   }
 }
 function verificarEstoque(){
     const nomeVinho = prompt("Informe o nome do vinho que deseja verificar: ");
-    if (estoqueVinho[nomeVinho] < 5){
-        alert(`O estoque está baixo, possuem ${estoqueVinho[nomeVinho]} unidades em estoque`);
+    if (estoqueVinho[nomeVinho].quantidade < 5){
+        alert(`O estoque está baixo, possuem ${estoqueVinho[nomeVinho].quantidade} unidades em estoque`);
     }
     else{
-        alert(`O estoque do vinho ${nomeVinho} é de ${estoqueVinho[nomeVinho]}`);
+        alert(`O estoque do vinho ${nomeVinho} é de ${estoqueVinho[nomeVinho].quantidade}`);
     }
 }
